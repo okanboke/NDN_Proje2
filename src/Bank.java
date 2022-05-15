@@ -1,15 +1,16 @@
 import java.util.Scanner;
+import java.time.LocalDateTime;  // Import the LocalDateTime class
+import java.time.format.DateTimeFormatter;  // Import the DateTimeFormatter class
 
 public class Bank {
 
     Scanner scan = new Scanner(System.in);
     private int accountID = 0;
     private static int numOfAccounts = 0;
-
     Account accounts[] = new Account[100];
 
     public void createSAccount() {
-        System.out.println("Bakiye Giriniz : ");
+        System.out.print("Bakiye Giriniz : ");
         double balance = scan.nextDouble();
         Account shortT = new ShortTerm(balance, accountID);
         if (shortT.getBalance() < shortT.getMinBalance()) {
@@ -21,7 +22,7 @@ public class Bank {
     }
 
     public void createLAccount() {
-        System.out.println("Bakiye Giriniz : ");
+        System.out.print("Bakiye Giriniz : ");
         double balance = scan.nextDouble();
         Account longT = new LongTerm(balance, accountID);
         accounts[accountID] = longT;
@@ -33,9 +34,16 @@ public class Bank {
             System.out.println("Hesap Oluşturulamadı...");
         }
         for (int i = 0; accounts[i] != null; i++) {
+            System.out.println("*************************************");
             System.out.println(i + ".HESAP BİLGİLERİ");
             System.out.println("BAKİYE  : " + accounts[i].getBalance());
             System.out.println("ID      : " + accounts[i].getId());
+            //Tarih
+            LocalDateTime myDateObj = LocalDateTime.now();
+            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("14/02/2022");
+            String formattedDate = myDateObj.format(myFormatObj);
+            System.out.println("Hesap Oluşturulma Tarihi: " + formattedDate);
+            System.out.println("*************************************");
         }
     }
 

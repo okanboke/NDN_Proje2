@@ -11,6 +11,8 @@ public class Main {
         int balance = scan.nextInt();
         ShortTerm t1= new ShortTerm(balance);*/
 
+        String islemgoruntule = "0. İşlemleri görüntüle";
+
         String islemler = "Banka uygulamasına hoşgeldiniz\n"
                     +"Lütfen Yapmak istediğiniz işlemi seçiniz\n"
                     +"1. Kısa vadeli hesap oluştur(%17 faiz en düşük miktar: 1000TL)\n"
@@ -25,13 +27,16 @@ public class Main {
         //işlem seçimi için while döngüsü
 
         while (true) {
-            System.out.println(islemler);
+            System.out.println(islemgoruntule);
             System.out.print("Yapmak istediğiniz işlemi seçiniz : ");
             String islemturu = scan.nextLine();
 
             if(islemturu.equals("q")) {
                 System.out.println("Banka Uygulamasından Çıkılıyor...");
                 break;
+            }
+            else if (islemturu.equals("0")) {
+                System.out.println(islemler);
             }
             else if (islemturu.equals("1")) {
                 b1.createSAccount();
